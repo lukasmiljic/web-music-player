@@ -2,6 +2,12 @@
     margin: 0px;
     padding: 0px;
     outline: none;
+    font-family: 'Lato',sans-serif;
+    font-weight: 400;
+}
+
+body{
+    background-color: black;
 }
 
 .main{
@@ -11,23 +17,189 @@
 }
 
 .hero{
-    background-color: red;
-    height: 50vh;
+    /* pick color from album art for bg */
+    background-image: linear-gradient(0deg,rgb(29, 3, 3), rgb(104, 0, 0));
+    padding: 40px 0px 30px 30px;
 }
 
-.track-listing{
-    background-color: aqua;
-    height: 100vh;
-}
-
-.controls-container{
-    background-color: gold;
-    position: fixed;
-    top: 90vh;
-    width: 100%;
-    height: 10vh;
-}
-.controls{
+.hero-container{
     display: flex;
     flex-direction: row;
+    align-items:end
+}
+
+.hero .album-cover-art{
+    min-width: 250px;
+    min-height: 250px;
+    background-color: white;
+    margin-right: 25px;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1{
+    font-weight: 900;
+    font-size: 4rem;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+.album-info-row li{
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.album-info-row .light{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+.track-listing{
+    background-image: radial-gradient(
+        100% 30% at top,
+        rgb(57, 0, 0) 0%, 
+        rgb(33, 2, 2) 100%
+    );
+    height: 100vh;
+    padding: 30px;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.track-listing table{
+    width: 100%;
+    border-collapse: collapse;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.track-listing td, th{
+    text-align: left;
+    padding: 10px;
+}
+
+.track-listing th:last-child{
+    padding-left: 20px;
+}
+
+.track-listing tr:not(:first-child):hover{
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s ease-out;
+}
+
+.track-listing tr:first-child{
+    border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.5);
+}
+/* change to 10% on mobile */
+.track-listing td:first-child{width: 3%;}
+.track-listing td:nth-child(2){width: 87%;}
+.track-listing td:last-child{width: 10%;}
+
+/* highlight currently playing song */
+/* .track-listing tr.playing p{
+    color: black;
+} */
+
+
+
+
+.controls-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.controls{
+    background-color: black;
+    position: fixed;
+    top: 85vh;
+    width: 100%;
+    height: 15vh;
+    padding: 0px 2vw 0px 2vw;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.current-song-info{
+    display: flex;
+    flex-direction: row;
+    width: 20%;
+    align-items: center;
+    height: 15vh;
+}
+
+.current-song-info .album-cover-art{
+    min-width: 60px;
+    min-height: 60px;
+    background-color: white;
+    margin-right: 15px ;
+    font-size:8px ;
+}
+
+.current-song-info .current-song-title{
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.current-song-info .current-artist{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: smaller;
+}
+
+.current-song-info .text-info{
+    margin-right: 15px;
+}
+
+.btn{
+    background-color: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right:15px ;
+}
+
+#play{
+    background-color: white;
+    background: white;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: black;
+    font-size: 21px;
+}
+
+.music-controls{
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.time-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.5);
+    
+}
+
+.progress-bar{
+    width: 400px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0px 15px 0px 15px;
+}
+
+.volume{
+    width: 20%;
+}
+
+#volume-btn{
+    padding-left: 50%;
 }
