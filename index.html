@@ -12,12 +12,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap" rel="stylesheet">
+
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <audio src="" id="audio"></audio>
+
     <main>
         <div class="hero">
             <div class="hero-container">
-                <img src="" alt="album cover" class="album-cover-art"> 
+                <img src="" alt="album cover" class="album-cover-art" id="album-cover-art1"> 
                 <div class="album-info">
                     <h1 class="album-title">Album title</h1>
                     <ul class="album-info-row">
@@ -62,6 +66,37 @@
                     <td>Song</td>
                     <td>3:00</td>
                 </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Song</td>
+                    <td>3:00</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Song</td>
+                    <td>3:00</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Song</td>
+                    <td>3:00</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Song</td>
+                    <td>3:00</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Song</td>
+                    <td>3:00</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Song</td>
+                    <td>3:00</td>
+                </tr>
+
             </table>
         </div>
     </main>
@@ -69,7 +104,7 @@
     <div class="controls">
         <div class="controls-container">
             <div class="current-song-info">
-                <img src="" alt="album-cover" class="album-cover-art">
+                <img src="" alt="album-cover" class="album-cover-art" id="album-cover-art2">
                 <div class="text-info">
                     <p class="current-song-title">Song title</p>
                     <p class="current-artist">Artist name</p>
@@ -79,12 +114,12 @@
                 </button>
             </div>
 
-            <div class="music-controls">
+            <div class="    rols">
                 <div class="buttons">
                     <button id="prev" class="btn">
                         <i class="fa-solid fa-backward"></i>
                     </button>
-                    <button id="play" class="btn">
+                    <button id="play-btn" class="btn">
                         <i class="fa-solid fa-play"></i>
                     </button>
                     <button id="next" class="btn">
@@ -94,7 +129,9 @@
 
                 <div class="time-info">
                     <p class="song-current-time">0:00</p>
-                    <div class="progress-bar"></div>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
                     <p class="song-duration">3:00</p>
                 </div>
             </div>
