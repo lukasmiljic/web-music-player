@@ -17,40 +17,77 @@ const audio = document.querySelector('#audio');
 // audio.src = `audio/song1.mp3`
 
 
+
+// const songs = [
+//     'Hit The Lights',
+//     'The Four Horsemen',
+//     'Motorbreath',
+//     'Jump In The Fire',
+//     '[Anesthesia] Pulling Teeth',
+//     'Whiplash',
+//     'Phantom Lord',
+//     'No Remorse',
+//     'Seek & Destroy',
+//     'Metal Militia'
+// ];
+
 const songs = [
-    'Hit The Lights',
-    'The Four Horsemen',
-    'Motorbreath',
-    'Jump In The Fire',
-    '[Anesthesia] Pulling Teeth',
-    'Whiplash',
-    'Phantom Lord',
-    'No Remorse',
-    'Seek & Destroy',
-    'Metal Militia'
-];
+    {'title':'Hit The Lights', 'length':'3:00', 'trackNumber':'1'},
+    {'title':'The Four Horsemen', 'length':'3:00', 'trackNumber':'2'},
+    {'title':'Motorbreath', 'length':'3:00', 'trackNumber':'3'},
+    {'title':'Jump In The Fire', 'length':'3:00', 'trackNumber':'4'},
+    {'title':'[Anesthesia] Pulling Teeth', 'length':'3:00', 'trackNumber':'5'},
+    {'title':'Whiplash', 'length':'3:00', 'trackNumber':'6'},
+    {'title':'Phantom Lord', 'length':'3:00', 'trackNumber':'7'},
+    {'title':'No Remorse', 'length':'3:00', 'trackNumber':'8'},
+    {'title':'Seek & Destroy', 'length':'3:00', 'trackNumber':'9'},
+    {'title':'Metal Militia', 'length':'3:00', 'trackNumber':'10'},
+]
+
+buildTable(songs)
+
+function buildTable(data){
+    var table = document.getElementById('song-table')
+
+    for (var i = 0; i < data.length; i++){
+        var row = `<tr>
+                        <td>${data[i].trackNumber}</td>
+                        <td><p class="track-list-tracks" id="${data[i].trackNumber}">${data[i].title}</p></td>
+                        <td>${data[i].length}</td>
+                    </tr>`
+        table.innerHTML += row
+    }
+}
 
 let songIndex = 5;
 
 const currentSongTitle = document.querySelector('.current-song-title')
 const currentArtist = document.querySelector('.current-artist')
 
-loadCoverArt('kill em all')
+loadCoverArt()
 albumTitle.innerText = "Kill 'Em All"
 artist.innerText = "Metallica"
 releaseYear.innerText = "1983"
 songCountElement.innerText = text.concat(songCount," songs,");
 albumDurationElement.innerText = text.concat(albumDuration," min");
 
+
+const trackListTrack = document.querySelectorAll(".track-list-tracks");
+
+
 loadSong(songs[songIndex]);
 
+
+
 function loadSong(song){
-    currentSongTitle.innerText = song
+    currentSongTitle.innerText = song.title
     currentArtist.innerText = "Metallica"
-    audio.src = `audio/${song}.mp3`
+    audio.src = `audio/${song.title}.mp3`
+    clearHighlight()
+    trackListTrack[song.trackNumber-1].classList.add('highlight-playing');
 }
 
-function loadCoverArt(song){
+function loadCoverArt(){
     for (let i = 0; i < coverArt.length; i++){
         coverArt[i].src=`img/killemall.jpg`
     }
@@ -152,3 +189,31 @@ volumeBtn.addEventListener('click',()=>{
         console.log("unmute")
     }
 })
+
+
+console.log(trackListTrack)
+
+addLinksToTracks();
+
+function addLinksToTracks(){
+    for (let i = 0; i < trackListTrack.length; i++){
+        trackListTrack[i].addEventListener('click',()=>{
+            songIndex = trackListTrack[i].id - 1
+            clearHighlight()
+            loadSong(songs[songIndex])
+            playSong();
+        })
+    }
+}
+
+function getIndex(x){
+    console.log(x)
+    return x.rowIndex
+}
+
+function clearHighlight(){
+    for (let i = 0; i < trackListTrack.length; i++){
+        console.log(i)
+        trackListTrack[i].classList.remove('highlight-playing')
+    }
+}

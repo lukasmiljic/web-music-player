@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
 
     <script src="script.js" defer></script>
 </head>
@@ -36,66 +36,14 @@
 
         <div class="track-listing">
             <table>
-                <tr>
+                <tr class="table-header">
                     <th>#</th>
                     <th>Title</th>
                     <th><i class="fa-regular fa-clock"></i></th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Song</td>
-                    <td>3:00</td>
-                </tr>
+
+                <tbody id="song-table">
+                </tbody>
 
             </table>
         </div>
@@ -109,12 +57,12 @@
                     <p class="current-song-title">Song title</p>
                     <p class="current-artist">Artist name</p>
                 </div>
-                <button id="heart-song" class="btn">
+                <!-- <button id="heart-song" class="btn">
                     <i class="fa-regular fa-heart"></i>
-                </button>
+                </button> -->
             </div>
 
-            <div class="    rols">
+            <div class="music-controls">
                 <div class="buttons">
                     <button id="prev" class="btn">
                         <i class="fa-solid fa-backward"></i>
