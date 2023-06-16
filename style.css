@@ -6,20 +6,25 @@
     font-weight: 400;
 }
 
+:root{
+    --dominant-color:#808080;
+    --dominant-color2:#414141;
+    --dominant-color3:#313131;
+}
+
 body{
     background-color: black;
-    /* border: 10px solid black; */
 }
 
 .main{
-    background-color: blueviolet;
     display: flex;
     flex-direction: column;
 }
 
+
+
 .hero{
-    /* pick color from album art for bg */
-    background-image: linear-gradient(0deg,#740e12, #e61b23);
+    background-image: linear-gradient(0deg, var(--dominant-color2), var(--dominant-color));
     padding: 40px 0px 30px 30px;
 }
 
@@ -48,9 +53,9 @@ body{
 
 .album-info-row li{
     display: inline-block;
-    color: rgba(255, 255, 255, 0.8);
     font-weight: 400;
     font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .album-info-row .light{
@@ -59,18 +64,11 @@ body{
 
 
 
-
-
-
-
-
-
-
 .track-listing{
     background-image: radial-gradient(
         100% 30% at top,
-        #5b0b0e 0%, 
-        #0e0e0e 100%
+        var(--dominant-color3) 0%,
+        rgb(18, 18, 18) 100%
     );
     height: 100vh;
     padding: 30px;
@@ -109,18 +107,24 @@ body{
 .track-listing td:nth-child(2){width: 87%;}
 .track-listing td:last-child{width: 10%;}
 
-/* highlight currently playing song */
-/* .track-listing tr.playing p{
-    color: black;
-}*/
-
 .track-list-tracks{
     width: fit-content;
     cursor: pointer;
 }
 
+.track-list-length{
+    font-weight: 300;
+    font-size: smaller;
+}
+
 .highlight-playing{
-    color: #e41b22c6;
+    color: var(--dominant-color);
+    transition: color 0.1s ease-out;
+}
+
+#song-table p:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 1.2px;
 }
 
 
@@ -141,7 +145,6 @@ body{
     width: 100%;
     height: 15vh;
     padding: 0px 2vw 0px 2vw;
-    /* border-top: 1px solid rgba(255, 255, 255, 0.3); */
 }
 
 .current-song-info{
@@ -231,7 +234,7 @@ body{
 }
 
 .progress{
-    background-color: white;
+    background-color: var(--dominant-color);
     border-radius: 5px;
     height: 100%;
     width: 0%;

@@ -14,10 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap" rel="stylesheet">
 
     <script src="script.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.4.0/color-thief.min.js" integrity="sha512-r2yd2GP87iHAsf2K+ARvu01VtR7Bs04la0geDLbFlB/38AruUbA5qfmtXwXx6FZBQGJRogiPtEqtfk/fnQfaYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <audio src="" id="audio"></audio>
-
     <main>
         <div class="hero">
             <div class="hero-container">
@@ -76,11 +77,11 @@
                 </div>
 
                 <div class="time-info">
-                    <p class="song-current-time">0:00</p>
+                    <p class="song-current-time"><span id="current-minute">0</span>:<span id="current-second">00</p>
                     <div class="progress-bar">
                         <div class="progress"></div>
                     </div>
-                    <p class="song-duration">3:00</p>
+                    <p class="song-duration">3:00</span></p>
                 </div>
             </div>
 

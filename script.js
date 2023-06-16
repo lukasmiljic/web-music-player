@@ -14,34 +14,19 @@ const nextBtn = document.querySelector("#next")
 const musicContainer = document.querySelector('.controls-container');
 
 const audio = document.querySelector('#audio');
-// audio.src = `audio/song1.mp3`
 
-
-
-// const songs = [
-//     'Hit The Lights',
-//     'The Four Horsemen',
-//     'Motorbreath',
-//     'Jump In The Fire',
-//     '[Anesthesia] Pulling Teeth',
-//     'Whiplash',
-//     'Phantom Lord',
-//     'No Remorse',
-//     'Seek & Destroy',
-//     'Metal Militia'
-// ];
 
 const songs = [
-    {'title':'Hit The Lights', 'length':'3:00', 'trackNumber':'1'},
-    {'title':'The Four Horsemen', 'length':'3:00', 'trackNumber':'2'},
-    {'title':'Motorbreath', 'length':'3:00', 'trackNumber':'3'},
-    {'title':'Jump In The Fire', 'length':'3:00', 'trackNumber':'4'},
-    {'title':'[Anesthesia] Pulling Teeth', 'length':'3:00', 'trackNumber':'5'},
-    {'title':'Whiplash', 'length':'3:00', 'trackNumber':'6'},
-    {'title':'Phantom Lord', 'length':'3:00', 'trackNumber':'7'},
-    {'title':'No Remorse', 'length':'3:00', 'trackNumber':'8'},
-    {'title':'Seek & Destroy', 'length':'3:00', 'trackNumber':'9'},
-    {'title':'Metal Militia', 'length':'3:00', 'trackNumber':'10'},
+    {'title':'Hit The Lights', 'length':'4:15', 'trackNumber':'1'},
+    {'title':'The Four Horsemen', 'length':'7:12', 'trackNumber':'2'},
+    {'title':'Motorbreath', 'length':'3:07', 'trackNumber':'3'},
+    {'title':'Jump In The Fire', 'length':'4:41', 'trackNumber':'4'},
+    {'title':'[Anesthesia] Pulling Teeth', 'length':'4:14', 'trackNumber':'5'},
+    {'title':'Whiplash', 'length':'4:08', 'trackNumber':'6'},
+    {'title':'Phantom Lord', 'length':'5:01', 'trackNumber':'7'},
+    {'title':'No Remorse', 'length':'6:26', 'trackNumber':'8'},
+    {'title':'Seek & Destroy', 'length':'6:54', 'trackNumber':'9'},
+    {'title':'Metal Militia', 'length':'5:11', 'trackNumber':'10'},
 ]
 
 buildTable(songs)
@@ -53,13 +38,13 @@ function buildTable(data){
         var row = `<tr>
                         <td>${data[i].trackNumber}</td>
                         <td><p class="track-list-tracks" id="${data[i].trackNumber}">${data[i].title}</p></td>
-                        <td>${data[i].length}</td>
+                        <td class=track-list-length>${data[i].length}</td>
                     </tr>`
         table.innerHTML += row
     }
 }
 
-let songIndex = 5;
+let songIndex = 0;
 
 const currentSongTitle = document.querySelector('.current-song-title')
 const currentArtist = document.querySelector('.current-artist')
@@ -85,6 +70,8 @@ function loadSong(song){
     audio.src = `audio/${song.title}.mp3`
     clearHighlight()
     trackListTrack[song.trackNumber-1].classList.add('highlight-playing');
+    const songDuration = document.querySelector(".song-duration")
+    songDuration.innerText = song.length
 }
 
 function loadCoverArt(){
@@ -150,6 +137,13 @@ function updateProgress(e){
     const {duration, currentTime} = e.srcElement;
     const progressPercent = (currentTime/duration) * 100;
     progress.style.width = `${progressPercent}%` 
+    const currentMinute = document.querySelector("#current-minute")
+    const currentSecond = document.querySelector("#current-second")
+
+    let s = parseInt(audio.currentTime % 60); 
+    let m = parseInt((audio.currentTime / 60) % 60);
+    currentMinute.innerText = m
+    currentSecond.innerText = (s<10?"0":"")+s;
 }
 
 function setProgress(e){
@@ -216,4 +210,48 @@ function clearHighlight(){
         console.log(i)
         trackListTrack[i].classList.remove('highlight-playing')
     }
+}
+
+
+
+
+const colorThief = new ColorThief()
+const img = document.querySelector('img')
+const dot = document.querySelector('.dot')
+
+if(img.complete){
+    getDominantColor(img)
+} else {
+    img.addEventListener('load', function() {
+    getDominantColor(img)
+});
+}
+
+function getDominantColor(img){
+    const dominantRGB = colorThief.getColor(img)
+    setDominantColor(dominantRGB)
+    generatePallette(dominantRGB)
+    console.log(dominantRGB)
+}
+
+function setDominantColor(rgbCode){
+    const r = document.querySelector(':root')
+    r.style.setProperty('--dominant-color',`rgb(${rgbCode[0]},${rgbCode[1]},${rgbCode[2]})`)
+}
+
+function generatePallette(rgbCode){
+    const r = document.querySelector(':root')
+    let modifier = -0.5
+    let R = rgbCode[0] + modifier*rgbCode[0]
+    let G = rgbCode[1] + modifier*rgbCode[1]
+    let B = rgbCode[2] + modifier*rgbCode[2]
+
+    r.style.setProperty('--dominant-color2',`rgb(${R},${G},${B})`)
+
+    modifier = -0.6
+    R = rgbCode[0] + modifier*rgbCode[0]
+    G = rgbCode[1] + modifier*rgbCode[1]
+    B = rgbCode[2] + modifier*rgbCode[2]
+
+    r.style.setProperty('--dominant-color3',`rgb(${R},${G},${B})`)
 }
